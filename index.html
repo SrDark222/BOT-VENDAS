@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Embed Trava 5K</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div id="embed" class="glass">
+  <pre id="code"></pre>
+</div>
+
+<script>
+  const embedList = [
+    {
+      title: "TRAVA 5K - VISUAL 1",
+      description: "https://cdn.discordapp.com/attachments/1159389012151478303/1217249111677292584/IMG_1754.gif\nCopie e cola a trava modo Shinigami",
+      color: 0xff0000
+    },
+    {
+      title: "TRAVA 5K - HOLOGRAPHIC",
+      description: "https://cdn.discordapp.com/emojis/1170372194731219014.gif\nVazando luz pra tudo que é lado",
+      color: 0x00ffff
+    },
+    {
+      title: "TRAVA 5K - FIRE STORM",
+      description: "https://cdn.discordapp.com/emojis/1150921542723192892.gif\nFogo no PC do alvo",
+      color: 0xff9900
+    },
+    {
+      title: "TRAVA 5K - NEON FLUX",
+      description: "https://cdn.discordapp.com/emojis/1168641736307638363.gif\nLuzes piscando, sistema caindo",
+      color: 0x9900ff
+    },
+    {
+      title: "TRAVA 5K - CHAOS CODE",
+      description: "https://cdn.discordapp.com/emojis/1168641816469684334.gif\nCódigos infinitos travando tudo",
+      color: 0xffffff
+    }
+  ];
+
+  const codeBox = document.getElementById("code");
+  const embedBox = document.getElementById("embed");
+
+  function updateEmbed() {
+    const random = embedList[Math.floor(Math.random() * embedList.length)];
+    const embedCode = `{
+  "embeds": [{
+    "title": "${random.title}",
+    "description": "${random.description}",
+    "color": ${random.color}
+  }]
+}`;
+    codeBox.textContent = embedCode;
+
+    embedBox.classList.add("hidden");
+    setTimeout(() => {
+      embedBox.classList.remove("hidden");
+    }, 50);
+  }
+
+  setInterval(updateEmbed, 100);
+
+  // Partículas do caos - 50k
+  for (let i = 0; i < 50000; i++) {
+    const dot = document.createElement("div");
+    dot.classList.add("particle");
+    dot.style.left = `${Math.random() * window.innerWidth}px`;
+    dot.style.top = `${Math.random() * window.innerHeight}px`;
+    dot.style.animationDuration = `${5 + Math.random() * 10}s`;
+    document.body.appendChild(dot);
+  }
+</script>
+
+</body>
+</html>
